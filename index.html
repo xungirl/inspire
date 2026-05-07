@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upcoming Workshops · Inspire Jewelry</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #b8922a;
+      --gold-light: #d4af6a;
+      --cream: #faf7f2;
+      --ink: #1c1a18;
+      --muted: #6b6358;
+      --card-bg: #ffffff;
+      --border: #e8e0d0;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    /* ── HERO ─────────────────────────────────────────── */
+    header {
+      position: relative;
+      background: var(--ink);
+      overflow: hidden;
+      padding: 80px 24px 64px;
+      text-align: center;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(184,146,42,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 80% 20%, rgba(184,146,42,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .ornament {
+      display: block;
+      font-size: 22px;
+      letter-spacing: .35em;
+      color: var(--gold);
+      margin-bottom: 18px;
+      opacity: .85;
+    }
+
+    header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      color: #f5f0e8;
+      line-height: 1.15;
+      letter-spacing: .04em;
+    }
+
+    header h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .tagline {
+      margin-top: 16px;
+      font-size: .85rem;
+      font-weight: 300;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,.5);
+    }
+
+    .divider-gold {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 28px auto 0;
+    }
+
+    /* ── INTRO ────────────────────────────────────────── */
+    .intro {
+      max-width: 620px;
+      margin: 56px auto 0;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .intro p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ── GRID ─────────────────────────────────────────── */
+    .workshops {
+      max-width: 1080px;
+      margin: 56px auto 80px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+    }
+
+    /* ── CARD ─────────────────────────────────────────── */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 36px 32px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: relative;
+      transition: box-shadow .25s, transform .25s;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-light), var(--gold), var(--gold-light));
+      opacity: 0;
+      transition: opacity .25s;
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,.10);
+      transform: translateY(-3px);
+    }
+
+    .card:hover::before { opacity: 1; }
+
+    .card-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: .72rem;
+      letter-spacing: .25em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 1.35rem;
+      line-height: 1.4;
+      color: var(--ink);
+    }
+
+    .meta {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: .82rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .meta-icon {
+      flex-shrink: 0;
+      width: 16px;
+      margin-top: 1px;
+      opacity: .6;
+    }
+
+    .meta-row a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .sep {
+      height: 1px;
+      background: var(--border);
+    }
+
+    .btn-register {
+      display: inline-block;
+      margin-top: auto;
+      padding: 11px 24px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Lato', sans-serif;
+      font-size: .75rem;
+      font-weight: 400;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      text-align: center;
+      transition: background .22s, color .22s;
+    }
+
+    .btn-register:hover {
+      background: var(--gold);
+      color: #fff;
+    }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: .75rem;
+      letter-spacing: .12em;
+      color: rgba(28,26,24,.35);
+      text-transform: uppercase;
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 480px) {
+      .card { padding: 28px 22px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <span class="ornament">✦ &nbsp; ✦ &nbsp; ✦</span>
+    <h1>Upcoming <em>Workshops</em></h1>
+    <p class="tagline">Traditional Chinese Jewelry Arts · Seattle &amp; Everett</p>
+    <div class="divider-gold"></div>
+  </header>
+
+  <div class="intro">
+    <p>Join us for an intimate series of hands-on workshops exploring the ancient beauty of Chinese jewelry arts — from lustrous mother-of-pearl inlay to the delicate craft of cloisonné and the rare art of dian cui featherwork.</p>
+  </div>
+
+  <section class="workshops">
+
+    <!-- 1 -->
+    <article class="card">
+      <div class="card-num">Workshop 01</div>
+      <h2>Mother-of-Pearl Jewelry Workshop</h2>
+      <div class="sep"></div>
+      <div class="meta">
+        <div class="meta-row">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Saturday, May 30, 2026 &nbsp;·&nbsp; 4:00 PM – 6:00 PM</span>
+        </div>
+        <div class="meta-row">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span>Dabble Studio<br/>306 N 83rd St, Seattle, WA 98103</span>
+        </div>
+      </div>
+      <a class="btn-register" href="https://docs.google.com/forms/d/e/1FAIpQLSep3kPu-GQ6R6wpO4QyEDX8rQDUwExyNdESdwTx1XRNBFeEDQ/viewform" target="_blank" rel="noopener">Register Now</a>
+    </article>
+
+    <!-- 2 -->
+    <article class="card">
+      <div class="card-num">Workshop 02</div>
+      <h2>Kingfisher-Style Chinese Jewelry</h2>
+      <div class="sep"></div>
+      <div class="meta">
+        <div class="meta-row">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Saturday, June 6, 2026 &nbsp;·&nbsp; 3:00 PM – 5:00 PM</span>
+        </div>
+        <div class="meta-row">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span>The Works Seattle<br/>3516 Fremont Pl N, Seattle, WA 98103</span>
+        </div>
+      </div>
+      <a class="btn-register" href="https://www.theworksseattle.com/kingfisher-style-jewelry" target="_blank" rel="noopener">Register Now</a>
+    </article>
+
+    <!-- 3 -->
+    <article class="card">
+      <div class="card-num">Workshop 03</div>
+      <h2>Mother-of-Pearl Jewelry: Traditional Inlay Art Workshop</h2>
+      <div class="sep"></div>
+      <div class="meta">
+        <div class="meta-row">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Saturday, June 13, 2026 &nbsp;·&nbsp; 2:00 PM – 4:00 PM</span>
+        </div>
+        <div class="meta-row">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span>Schack Art Center<br/>2921 Hoyt Avenue, Everett, WA 98201</span>
+        </div>
+      </div>
+      <a class="btn-register" href="https://www.schack.org/classes-workshops-events/mother-of-pearl-jewelry-traditional-inlay-art-workshop" target="_blank" rel="noopener">Register Now</a>
+    </article>
+
+    <!-- 4 -->
+    <article class="card">
+      <div class="card-num">Workshop 04</div>
+      <h2>Cloisonné Jewelry Workshop</h2>
+      <div class="sep"></div>
+      <div class="meta">
+        <div class="meta-row">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Friday, July 24, 2026 &nbsp;·&nbsp; 11:00 AM – 3:00 PM</span>
+        </div>
+        <div class="meta-row">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span>Wing Luke Museum<br/>719 S. King Street, Seattle, WA 98104</span>
+        </div>
+      </div>
+      <a class="btn-register" href="https://docs.google.com/forms/d/e/1FAIpQLSfMKSNx4IFeGZYyEpb4toNowq9k5P2WRysweX4ortl5m8qqYw/viewform" target="_blank" rel="noopener">Register Now</a>
+    </article>
+
+    <!-- 5 -->
+    <article class="card">
+      <div class="card-num">Workshop 05</div>
+      <h2>Cloisonné-Inspired Jewelry: A Beginner-Friendly Workshop</h2>
+      <div class="sep"></div>
+      <div class="meta">
+        <div class="meta-row">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Saturday, July 25, 2026 &nbsp;·&nbsp; 2:00 PM – 4:00 PM</span>
+        </div>
+        <div class="meta-row">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span>Schack Art Center<br/>2921 Hoyt Avenue, Everett, WA 98201</span>
+        </div>
+      </div>
+      <a class="btn-register" href="https://www.schack.org/classes-workshops-events/cloisonn-inspired-jewelry-a-beginner-friendly-workshop" target="_blank" rel="noopener">Register Now</a>
+    </article>
+
+    <!-- 6 -->
+    <article class="card">
+      <div class="card-num">Workshop 06</div>
+      <h2>Dian Cui–Inspired Jewelry: Hands-On Feather Art Workshop</h2>
+      <div class="sep"></div>
+      <div class="meta">
+        <div class="meta-row">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Saturday, September 12, 2026 &nbsp;·&nbsp; 2:00 PM – 4:00 PM</span>
+        </div>
+        <div class="meta-row">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span>Schack Art Center<br/>2921 Hoyt Avenue, Everett, WA 98201</span>
+        </div>
+      </div>
+      <a class="btn-register" href="https://www.schack.org/classes-workshops-events/dian-cuiinspired-jewelry-hands-on-feather-art-workshop" target="_blank" rel="noopener">Register Now</a>
+    </article>
+
+  </section>
+
+  <footer>
+    <p>Inspire Jewelry &nbsp;·&nbsp; Seattle, WA &nbsp;·&nbsp; 2026</p>
+  </footer>
+
+</body>
+</html>
