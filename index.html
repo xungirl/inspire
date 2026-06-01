@@ -113,15 +113,37 @@
       line-height: 1.75;
     }
 
+    /* ── SECTION TITLE ────────────────────────────────── */
+    .section-title {
+      max-width: 1080px;
+      margin: 56px auto 0;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .section-title h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      color: var(--gold-light);
+      letter-spacing: .08em;
+    }
+
+    .section-title .divider-gold {
+      margin: 18px auto 0;
+    }
+
     /* ── GRID ─────────────────────────────────────────── */
     .workshops {
       max-width: 1080px;
-      margin: 56px auto 80px;
+      margin: 32px auto 40px;
       padding: 0 20px;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 28px;
     }
+
+    .workshops.past .card { opacity: .75; }
 
     /* ── CARD ─────────────────────────────────────────── */
     .card {
@@ -286,6 +308,11 @@
     <p>Join us for an intimate series of hands-on workshops exploring the ancient beauty of Chinese jewelry arts — from lustrous mother-of-pearl inlay to the delicate craft of cloisonné and the rare art of dian cui featherwork.</p>
   </div>
 
+  <div class="section-title">
+    <h2>Upcoming Events</h2>
+    <div class="divider-gold"></div>
+  </div>
+
   <section class="workshops">
 
     <!-- 1 -->
@@ -402,9 +429,18 @@
       <div class="card-promo"><img src="img-kingfisher.png" alt="Kingfisher Inspired Jewelry Workshop"></div>
     </article>
 
-    <!-- 7 — already held May 30 -->
+  </section>
+
+  <div class="section-title">
+    <h2>Past Events</h2>
+    <div class="divider-gold"></div>
+  </div>
+
+  <section class="workshops past">
+
+    <!-- past 01 — already held May 30 -->
     <article class="card">
-      <div class="card-num">Workshop 07</div>
+      <div class="card-num">Past Event</div>
       <h2>Mother-of-Pearl Jewelry Workshop</h2>
       <div class="sep"></div>
       <div class="meta">
@@ -417,7 +453,7 @@
           <span>Dabble Studio<br/>306 N 83rd St, Seattle, WA 98103</span>
         </div>
       </div>
-      <span class="btn-sold-out">Expired</span>
+      <span class="btn-sold-out">Sold Out</span>
       <div class="card-promo"><img src="img-mother-of-pearl.png" alt="Mother-of-Pearl Inlay Workshop"></div>
     </article>
 
