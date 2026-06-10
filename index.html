@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Upcoming Workshops · Inspire Jewelry</title>
+  <title>Upcoming Workshops · The Artisan Jen</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,6 +25,42 @@
       min-height: 100vh;
     }
 
+    /* ── NAV ──────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      gap: 38px;
+      padding: 18px 24px;
+      background: rgba(10,10,10,.82);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav a {
+      font-family: 'Lato', sans-serif;
+      font-size: .72rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      position: relative;
+      padding: 4px 0;
+      transition: color .25s;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width .3s ease;
+    }
+    nav a:hover { color: var(--gold-light); }
+    nav a:hover::after, nav a.active::after { width: 100%; }
+    nav a.active { color: var(--gold-light); }
+
     /* ── HERO ─────────────────────────────────────────── */
     header {
       position: relative;
@@ -45,6 +81,17 @@
         rgba(0, 0, 0, 0.50) 100%
       );
       pointer-events: none;
+    }
+
+    .brand-name {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 400;
+      letter-spacing: .12em;
+      color: #ffe082;
+      margin-bottom: 16px;
+      text-shadow: 0 0 2px #000, 1px 1px 0 #000, -1px -1px 0 #000, 0 0 18px rgba(0,0,0,.85);
     }
 
     .ornament {
@@ -323,7 +370,14 @@
 </head>
 <body>
 
+  <nav>
+    <a href="index.html" class="active">Workshops</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="portfolio.html#about">About &amp; Contact</a>
+  </nav>
+
   <header>
+    <span class="brand-name">The Artisan Jen</span>
     <span class="ornament">✦ &nbsp; ✦ &nbsp; ✦</span>
     <h1>Upcoming <em>Workshops & Events</em></h1>
     <p class="tagline">Traditional Chinese Jewelry Arts · Seattle &amp; Everett</p>
@@ -439,7 +493,7 @@
   </section>
 
   <footer>
-    <p>Inspire Jewelry &nbsp;·&nbsp; Seattle, WA &nbsp;·&nbsp; 2026</p>
+    <p>The Artisan Jen &nbsp;·&nbsp; Traditional Handcrafted Jewelry &amp; Art &nbsp;·&nbsp; Seattle, WA &nbsp;·&nbsp; 2026</p>
   </footer>
 
 </body>
