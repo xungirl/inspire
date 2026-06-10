@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Past Events · Inspire Jewelry</title>
+  <title>Past Events · The Artisan Jen</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,6 +24,42 @@
       color: var(--ink);
       min-height: 100vh;
     }
+
+    /* ── NAV ──────────────────────────────────────────── */
+    nav.main-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      gap: 38px;
+      padding: 18px 24px;
+      background: rgba(10,10,10,.82);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav.main-nav a {
+      font-family: 'Lato', sans-serif;
+      font-size: .72rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      position: relative;
+      padding: 4px 0;
+      transition: color .25s;
+    }
+    nav.main-nav a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width .3s ease;
+    }
+    nav.main-nav a:hover { color: var(--gold-light); }
+    nav.main-nav a:hover::after, nav.main-nav a.active::after { width: 100%; }
+    nav.main-nav a.active { color: var(--gold-light); }
 
     /* ── HERO ─────────────────────────────────────────── */
     header {
@@ -302,6 +338,12 @@
 </head>
 <body>
 
+  <nav class="main-nav">
+    <a href="index.html">Workshops</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About &amp; Contact</a>
+  </nav>
+
   <header>
     <span class="ornament">✦ &nbsp; ✦ &nbsp; ✦</span>
     <h1>Past <em>Workshops & Events</em></h1>
@@ -361,7 +403,7 @@
   </section>
 
   <footer>
-    <p>Inspire Jewelry &nbsp;·&nbsp; Seattle, WA &nbsp;·&nbsp; 2026</p>
+    <p>The Artisan Jen &nbsp;·&nbsp; Traditional Handcrafted Jewelry &amp; Art &nbsp;·&nbsp; Seattle, WA &nbsp;·&nbsp; 2026</p>
   </footer>
 
 </body>
