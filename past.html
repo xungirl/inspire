@@ -330,6 +330,22 @@
       text-transform: uppercase;
     }
 
+    /* two-line footer with the · separators vertically aligned */
+    footer p.footer-lines {
+      display: inline-grid;
+      grid-template-columns: auto auto auto;
+      column-gap: 12px;
+      row-gap: 6px;
+      align-items: baseline;
+    }
+    footer .fl-l { text-align: right; }
+    footer .fl-r { text-align: left; }
+    footer .fl-d { opacity: .65; }
+
+    @media (max-width: 600px) {
+      footer p.footer-lines { font-size: .58rem; letter-spacing: .04em; column-gap: 8px; }
+    }
+
     /* ── RESPONSIVE ───────────────────────────────────── */
     @media (max-width: 480px) {
       .card { padding: 28px 22px 24px; }
@@ -402,7 +418,10 @@
   </section>
 
   <footer>
-    <p>The Artisan Jen &nbsp;·&nbsp; Traditional Handcrafted Jewelry &amp; Art &nbsp;·&nbsp; Seattle, WA &nbsp;·&nbsp; 2026</p>
+    <p class="footer-lines">
+      <span class="fl-l">The Artisan Jen</span><span class="fl-d">·</span><span class="fl-r">Traditional Handcrafted Jewelry &amp; Art</span>
+      <span class="fl-l">Seattle, WA</span><span class="fl-d">·</span><span class="fl-r">2026</span>
+    </p>
   </footer>
 
 </body>
