@@ -4,161 +4,167 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio · The Artisan Jen</title>
-  <!--
-    Redesign-preserve of The Artisan Jen portfolio page.
-    Matches the canonical homepage (index.html): dark lacquer theme (#100d0a),
-    Cormorant Garamond display serif + Manrope UI sans, single gilt accent,
-    same nav markup/links, same grain + footer. Editorial mosaic gallery with
-    gilt hover treatment and a restyled lightbox. All 26 pieces preserved.
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* Dark lacquer theme. One warm-metal accent. (shared with index.html) */
-      --bg:        #100d0a;
-      --bg-2:      #181410;
-      --bg-3:      #1f1a14;
-      --line:      #2c251b;
-      --line-2:    #3a3122;
-      --ink:       #ece4d3;
-      --ink-soft:  #b3a892;
-      --ink-mute:  #837a67;
-      --gilt:      #c79a4b;
-      --gilt-hi:   #e6c474;
-      --radius:    4px;
-      --maxw:      1240px;
-      --ease:      cubic-bezier(0.16, 1, 0.3, 1);
+      --gold: #c9973a;
+      --gold-light: #f0c85a;
+      --cream: #0a0a0a;
+      --ink: #f5d98a;
+      --muted: #c9a84c;
+      --card-bg: #111111;
+      --border: #2a2418;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Manrope', system-ui, sans-serif;
-      background: var(--bg);
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
       color: var(--ink);
-      min-height: 100dvh;
+      min-height: 100vh;
       overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    a { color: inherit; }
-
-    /* film grain, fixed, pointer-events none */
-    .grain {
-      position: fixed; inset: 0; z-index: 60; pointer-events: none;
-      opacity: .035; mix-blend-mode: overlay;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
     /* ── NAV ──────────────────────────────────────────── */
-    .topbar {
-      position: sticky; top: 0; z-index: 50;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 24px;
-      height: 68px;
-      padding: 0 clamp(20px, 5vw, 56px);
-      background: rgba(16,13,10,.72);
-      backdrop-filter: blur(14px) saturate(120%);
-      -webkit-backdrop-filter: blur(14px) saturate(120%);
-      border-bottom: 1px solid var(--line);
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      gap: 38px;
+      padding: 18px 24px;
+      background: rgba(10,10,10,.82);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
     }
-    .wordmark {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.18rem; font-weight: 500; letter-spacing: .04em;
-      color: var(--ink); text-decoration: none; white-space: nowrap;
+
+    nav a {
+      font-family: 'Lato', sans-serif;
+      font-size: .72rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      position: relative;
+      padding: 4px 0;
+      transition: color .25s;
     }
-    .wordmark span { color: var(--gilt); }
-    .nav-links { display: flex; align-items: center; gap: clamp(20px, 4vw, 40px); }
-    .nav-links a {
-      font-size: .74rem; letter-spacing: .16em; text-transform: uppercase;
-      color: var(--ink-soft); text-decoration: none;
-      position: relative; padding: 6px 0; transition: color .25s var(--ease);
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width .3s ease;
     }
-    .nav-links a::after {
-      content: ''; position: absolute; left: 0; bottom: 0;
-      width: 0; height: 1px; background: var(--gilt); transition: width .3s var(--ease);
-    }
-    .nav-links a:hover { color: var(--gilt-hi); }
-    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-    .nav-links a.active { color: var(--ink); }
+
+    nav a:hover { color: var(--gold-light); }
+    nav a:hover::after, nav a.active::after { width: 100%; }
+    nav a.active { color: var(--gold-light); }
 
     /* ── HERO ─────────────────────────────────────────── */
-    .hero {
+    header {
       position: relative;
-      min-height: min(58dvh, 480px);
-      display: grid;
-      align-items: end;
-      padding: clamp(40px, 8vw, 96px) clamp(20px, 5vw, 56px) clamp(40px, 5vw, 60px);
+      background: url('bg.jpg') center 55% / 160% auto no-repeat;
       overflow: hidden;
-      isolation: isolate;
+      padding: 96px 24px 80px;
+      text-align: center;
     }
-    .hero-bg {
-      position: absolute; inset: 0; z-index: -2;
-      background: url('bg.jpg') center 48% / cover no-repeat;
-      transform: scale(1.04);
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,.55) 0%, rgba(0,0,0,.45) 55%, rgba(0,0,0,.65) 100%);
+      pointer-events: none;
     }
-    .hero::before {
-      content: ''; position: absolute; inset: 0; z-index: -1;
-      background:
-        linear-gradient(90deg, rgba(16,13,10,.88) 0%, rgba(16,13,10,.62) 42%, rgba(16,13,10,.34) 72%, rgba(16,13,10,.55) 100%),
-        linear-gradient(180deg, rgba(16,13,10,.50) 0%, rgba(16,13,10,.05) 38%, rgba(16,13,10,.88) 100%);
+
+    header > * { position: relative; z-index: 1; }
+
+    .ornament {
+      display: block;
+      font-size: 22px;
+      letter-spacing: .35em;
+      color: var(--gold);
+      margin-bottom: 18px;
+      opacity: .85;
+      animation: fadeDown 1s ease both;
     }
-    .hero-inner { max-width: var(--maxw); width: 100%; margin: 0 auto; }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 12px;
-      font-size: .72rem; letter-spacing: .26em; text-transform: uppercase;
-      color: var(--gilt-hi); margin-bottom: 22px;
-    }
-    .hero-eyebrow .rule { width: 38px; height: 1px; background: var(--gilt); display: inline-block; }
-    .hero h1 {
+
+    header h1 {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 300;
-      font-size: clamp(2.6rem, 7vw, 5.4rem);
-      line-height: 1.02;
-      letter-spacing: .005em;
-      color: var(--ink);
-      max-width: 16ch;
+      font-size: clamp(2.4rem, 6.5vw, 4.4rem);
+      color: #ffffff;
+      text-shadow:
+        0 0 2px #000, 0 0 2px #000, 0 0 2px #000,
+        1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+        0 0 20px rgba(0,0,0,.9), 0 0 40px rgba(0,0,0,.7);
+      line-height: 1.15;
+      letter-spacing: .04em;
+      animation: fadeUp 1.1s .15s ease both;
     }
-    .hero h1 em {
-      font-style: italic; font-weight: 400; color: var(--gilt-hi);
-      line-height: 1.1; padding-bottom: 0.06em; display: inline-block;
+
+    header h1 em {
+      font-style: italic;
+      color: #fff176;
+      text-shadow:
+        0 0 2px #000, 0 0 2px #000,
+        1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+        0 0 20px rgba(255,230,80,1), 0 0 50px rgba(255,200,0,.9);
     }
-    .hero-sub {
-      margin-top: 26px;
-      font-size: .8rem; font-weight: 400;
-      letter-spacing: .2em; text-transform: uppercase;
-      color: var(--ink-soft);
+
+    .tagline {
+      margin-top: 16px;
+      font-size: .85rem;
+      font-weight: 300;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #ffffff;
+      text-shadow: 0 0 2px #000, 0 0 2px #000, 1px 1px 0 #000, -1px -1px 0 #000, 0 0 15px rgba(0,0,0,.9);
+      animation: fadeUp 1.1s .3s ease both;
+    }
+
+    .divider-gold {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 28px auto 0;
+      animation: growLine 1.2s .5s ease both;
     }
 
     /* ── INTRO ────────────────────────────────────────── */
     .intro {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: clamp(48px, 7vw, 84px) clamp(20px, 5vw, 56px) 0;
+      max-width: 640px;
+      margin: 60px auto 0;
+      padding: 0 24px;
+      text-align: center;
     }
+
     .intro p {
-      max-width: 56ch;
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.12rem, 2.3vw, 1.4rem);
-      font-style: italic; font-weight: 300; line-height: 1.6;
-      color: var(--ink-soft);
+      font-size: 1.25rem;
+      font-weight: 300;
+      font-style: italic;
+      color: #c9a84c;
+      line-height: 1.75;
     }
 
     /* ── GALLERY (editorial mosaic) ───────────────────── */
     .gallery {
-      max-width: var(--maxw);
-      margin: clamp(36px, 5vw, 56px) auto clamp(64px, 8vw, 100px);
-      padding: 0 clamp(20px, 5vw, 56px);
+      max-width: 1240px;
+      margin: 56px auto 90px;
+      padding: 0 22px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       grid-auto-rows: 200px;
       grid-auto-flow: dense;
-      gap: clamp(14px, 1.6vw, 22px);
+      gap: 16px;
     }
 
     figure {
@@ -166,14 +172,13 @@
       grid-column: span 1;
       grid-row: span 1;
       overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      border-radius: 3px;
       cursor: pointer;
-      background: var(--bg-2);
+      background: var(--card-bg);
       opacity: 0;
-      transform: translateY(30px) scale(.985);
-      transition: opacity .8s var(--ease), transform .8s var(--ease),
-                  box-shadow .35s var(--ease), border-color .35s var(--ease);
+      transform: translateY(34px) scale(.985);
+      transition: opacity .8s ease, transform .8s ease, box-shadow .35s ease, border-color .35s ease;
     }
 
     /* artistic feature tiles — varied sizes for an editorial rhythm */
@@ -189,76 +194,12 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
-      filter: saturate(.96) brightness(.97);
-      transition: transform .7s var(--ease), filter .6s var(--ease);
+      transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .6s ease;
     }
-
-    figure::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(16,13,10,.78) 0%, rgba(16,13,10,0) 48%);
-      opacity: 0;
-      transition: opacity .4s var(--ease);
-      pointer-events: none;
-    }
-
-    .fig-cap {
-      position: absolute;
-      left: 18px;
-      bottom: 15px;
-      z-index: 2;
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity .4s var(--ease), transform .4s var(--ease);
-      pointer-events: none;
-    }
-    .fig-cap .fc-num {
-      display: block;
-      font-size: .64rem;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--gilt);
-      margin-bottom: 4px;
-    }
-    .fig-cap .fc-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      font-style: italic;
-      color: var(--ink);
-    }
-
-    figure:hover {
-      box-shadow: 0 18px 50px rgba(16,13,10,.55);
-      border-color: var(--gilt);
-    }
-    figure:hover img { transform: scale(1.05); filter: saturate(1.04) brightness(1); }
-    figure:hover::after { opacity: 1; }
-    figure:hover .fig-cap { opacity: 1; transform: translateY(0); }
-
-    /* corner plus icon */
-    .fig-plus {
-      position: absolute;
-      top: 14px; right: 14px;
-      z-index: 2;
-      width: 34px; height: 34px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(199,154,75,.7);
-      border-radius: 50%;
-      color: var(--gilt-hi);
-      background: rgba(16,13,10,.40);
-      backdrop-filter: blur(4px);
-      opacity: 0;
-      transform: scale(.6) rotate(-45deg);
-      transition: opacity .4s var(--ease), transform .4s var(--ease);
-    }
-    figure:hover .fig-plus { opacity: 1; transform: scale(1) rotate(0); }
-    .fig-plus svg { width: 16px; height: 16px; }
 
     /* tablet — 2 columns, demote 2x2 tiles so nothing overflows */
     @media (max-width: 900px) {
-      .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 220px; }
+      .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 220px; gap: 14px; }
       figure.big { grid-column: span 2; grid-row: span 1; }
     }
 
@@ -266,11 +207,15 @@
     @media (max-width: 600px) {
       .gallery {
         display: block;
-        max-width: 480px;
+        max-width: 460px;
         padding: 0 16px;
       }
-      figure { display: block; margin: 0 0 16px; }
+      figure {
+        display: block;
+        margin: 0 0 16px;
+      }
       figure img { height: auto; object-fit: contain; }
+      /* no hover on touch — keep caption + gradient gently visible */
       figure::after { opacity: 1; }
       .fig-cap { opacity: 1; transform: none; }
       .fig-plus { opacity: .9; transform: none; }
@@ -282,6 +227,78 @@
       .fig-cap { opacity: 1; transform: none; }
     }
 
+    /* small-screen hero + nav tightening */
+    @media (max-width: 600px) {
+      nav { gap: 22px; padding: 14px 16px; }
+      header { padding: 64px 18px 54px; }
+      .intro { margin-top: 44px; }
+      .intro p { font-size: 1.1rem; }
+    }
+
+    figure::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.65) 0%, rgba(0,0,0,0) 45%);
+      opacity: 0;
+      transition: opacity .4s ease;
+      pointer-events: none;
+    }
+
+    .fig-cap {
+      position: absolute;
+      left: 18px;
+      bottom: 14px;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .4s ease, transform .4s ease;
+      pointer-events: none;
+    }
+
+    .fig-cap .fc-num {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: .7rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    .fig-cap .fc-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: #fff;
+    }
+
+    figure:hover {
+      box-shadow: 0 18px 50px rgba(0,0,0,.55);
+      border-color: var(--gold);
+    }
+    figure:hover img { transform: scale(1.07); }
+    figure:hover::after { opacity: 1; }
+    figure:hover .fig-cap { opacity: 1; transform: translateY(0); }
+
+    /* corner plus icon */
+    .fig-plus {
+      position: absolute;
+      top: 14px; right: 14px;
+      z-index: 2;
+      width: 34px; height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(240,200,90,.7);
+      border-radius: 50%;
+      color: var(--gold-light);
+      background: rgba(10,10,10,.35);
+      opacity: 0;
+      transform: scale(.6) rotate(-45deg);
+      transition: opacity .4s ease, transform .4s ease;
+    }
+    figure:hover .fig-plus { opacity: 1; transform: scale(1) rotate(0); }
+    .fig-plus svg { width: 16px; height: 16px; }
+
     /* ── LIGHTBOX ─────────────────────────────────────── */
     .lightbox {
       position: fixed;
@@ -290,11 +307,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(8,6,4,.94);
-      backdrop-filter: blur(6px);
+      background: rgba(5,5,5,.94);
       opacity: 0;
       visibility: hidden;
-      transition: opacity .35s var(--ease), visibility .35s var(--ease);
+      transition: opacity .35s ease, visibility .35s ease;
       padding: 40px;
     }
     .lightbox.open { opacity: 1; visibility: visible; }
@@ -302,30 +318,28 @@
     .lightbox img {
       max-width: 90vw;
       max-height: 86vh;
-      border: 1px solid var(--line-2);
-      border-radius: var(--radius);
+      border: 1px solid var(--border);
       box-shadow: 0 24px 80px rgba(0,0,0,.7);
       transform: scale(.92);
-      transition: transform .4s var(--ease);
+      transition: transform .4s cubic-bezier(.2,.7,.2,1);
     }
     .lightbox.open img { transform: scale(1); }
 
     .lb-btn {
       position: absolute;
-      background: rgba(16,13,10,.45);
-      border: 1px solid var(--line-2);
-      color: var(--gilt-hi);
+      background: none;
+      border: 1px solid rgba(240,200,90,.4);
+      color: var(--gold-light);
       width: 52px; height: 52px;
       border-radius: 50%;
       font-size: 1.4rem;
       cursor: pointer;
       display: grid;
       place-items: center;
-      transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
+      transition: background .25s, border-color .25s, transform .25s;
       user-select: none;
     }
-    .lb-btn:hover { background: rgba(199,154,75,.16); border-color: var(--gilt); transform: scale(1.08); }
-    .lb-btn:active { transform: scale(.97); }
+    .lb-btn:hover { background: rgba(201,151,58,.18); border-color: var(--gold); transform: scale(1.08); }
     .lb-close { top: 24px; right: 24px; }
     .lb-prev { left: 24px; top: 50%; transform: translateY(-50%); }
     .lb-next { right: 24px; top: 50%; transform: translateY(-50%); }
@@ -335,10 +349,9 @@
       bottom: 26px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: .72rem;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--ink-mute);
+      font-size: .75rem;
+      letter-spacing: .25em;
+      color: var(--muted);
     }
 
     @media (max-width: 560px) {
@@ -349,63 +362,50 @@
 
     /* ── FOOTER ───────────────────────────────────────── */
     footer {
-      border-top: 1px solid var(--line);
-      padding: clamp(40px, 6vw, 64px) clamp(20px, 5vw, 56px);
+      border-top: 1px solid var(--border);
+      padding: 36px 24px;
+      text-align: center;
     }
-    .foot-inner {
-      max-width: var(--maxw); margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 24px; flex-wrap: wrap;
+    footer p {
+      font-size: .75rem;
+      letter-spacing: .12em;
+      color: rgba(201,168,76,.4);
+      text-transform: uppercase;
     }
-    .foot-brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem; font-weight: 500; color: var(--ink);
-    }
-    .foot-brand span { color: var(--gilt); }
-    .foot-meta { font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-mute); }
+
+    /* ── KEYFRAMES ────────────────────────────────────── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-18px); } to { opacity: .85; transform: translateY(0); } }
+    @keyframes growLine { from { width: 0; opacity: 0; } to { width: 60px; opacity: 1; } }
 
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      figure { opacity: 1 !important; transform: none !important; }
-      figure img, .lb-btn, .lightbox img, .fig-cap, .fig-plus { transition: none !important; }
-      .hero-bg { transform: none; }
+      * { animation: none !important; transition: none !important; }
+      figure { opacity: 1; transform: none; }
     }
   </style>
 </head>
 <body>
-  <div class="grain" aria-hidden="true"></div>
 
-  <header class="topbar">
-    <a class="wordmark" href="index.html">The Artisan <span>Jen</span></a>
-    <nav class="nav-links">
-      <a href="index.html">Workshops</a>
-      <a href="portfolio.html" class="active">Portfolio</a>
-    </nav>
+  <nav>
+    <a href="index.html">Workshops</a>
+    <a href="portfolio.html" class="active">Portfolio</a>
+  </nav>
+
+  <header>
+    <span class="ornament">✦ &nbsp; ✦ &nbsp; ✦</span>
+    <h1>Portfolio <em>&amp; Creations</em></h1>
+    <p class="tagline">A Gallery of Traditional Chinese Jewelry Arts</p>
+    <div class="divider-gold"></div>
   </header>
 
-  <!-- ── HERO ─────────────────────────────────────────── -->
-  <section class="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="hero-inner">
-      <span class="hero-eyebrow"><span class="rule"></span> The Artisan Jen</span>
-      <h1>Portfolio <em>&amp; Creations</em></h1>
-      <p class="hero-sub">A Gallery of Traditional Chinese Jewelry Arts</p>
-    </div>
-  </section>
-
-  <!-- ── INTRO ────────────────────────────────────────── -->
   <div class="intro">
-    <p>Each piece is a quiet conversation between ancient craft and the hand that shapes it: mother-of-pearl, cloisonné enamel, and the luminous blue of dian cui featherwork, reimagined for today.</p>
+    <p>Each piece is a quiet conversation between ancient craft and the hand that shapes it — mother-of-pearl, cloisonné enamel, and the luminous blue of dian cui featherwork, reimagined for today.</p>
   </div>
 
-  <!-- ── GALLERY ──────────────────────────────────────── -->
   <section class="gallery" id="gallery"><!-- figures injected by script --></section>
 
   <footer>
-    <div class="foot-inner">
-      <span class="foot-brand">The Artisan <span>Jen</span></span>
-      <span class="foot-meta">Seattle, WA · 2026</span>
-    </div>
+    <p>Seattle, WA &nbsp;·&nbsp; 2026</p>
   </footer>
 
   <!-- Lightbox -->
@@ -445,7 +445,7 @@
         <span class="fig-plus">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </span>
-        <img src="${src}" alt="${cap} - The Artisan Jen piece ${num}" loading="lazy" />
+        <img src="${src}" alt="${cap} — The Artisan Jen piece ${num}" loading="lazy" />
         <figcaption class="fig-cap">
           <span class="fc-num">Piece ${num}</span>
           <span class="fc-title">${cap}</span>
@@ -455,26 +455,18 @@
     }
 
     // ── Scroll reveal (staggered) ──────────────────────
-    // Motivated: stages mosaic tiles into view as the visitor scrolls, matching
-    // the homepage's editorial reading rhythm. IntersectionObserver, no scroll
-    // listeners. Honors prefers-reduced-motion via the CSS media query.
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const revealEls = [...gallery.querySelectorAll('figure')];
-    if (reduce || !('IntersectionObserver' in window)) {
-      revealEls.forEach((el) => el.classList.add('reveal'));
-    } else {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            const idx = e.target.dataset.index;
-            if (idx !== undefined) e.target.style.transitionDelay = `${(+idx % 3) * 90}ms`;
-            e.target.classList.add('reveal');
-            io.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-      revealEls.forEach((el) => io.observe(el));
-    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          const idx = e.target.dataset.index;
+          if (idx !== undefined) e.target.style.transitionDelay = `${(+idx % 3) * 90}ms`;
+          e.target.classList.add('reveal');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach((el) => io.observe(el));
 
     // ── Lightbox ───────────────────────────────────────
     const lb = document.getElementById('lightbox');
@@ -486,7 +478,7 @@
       current = (idx + items.length) % items.length;
       const it = items[current];
       lbImg.src = it.src;
-      lbImg.alt = `${it.cap} - piece ${it.num}`;
+      lbImg.alt = `${it.cap} — piece ${it.num}`;
       lbCounter.textContent = `${String(current + 1).padStart(2,'0')} / ${items.length}`;
     }
     function open(idx) { show(idx); lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; }
