@@ -373,6 +373,32 @@
       text-transform: uppercase;
     }
 
+    .footer-contact {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px 30px;
+      margin-bottom: 18px;
+    }
+    .footer-contact a {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-size: .8rem;
+      letter-spacing: .08em;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .22s;
+    }
+    .footer-contact a:hover { color: var(--gold-light); }
+    .footer-contact svg {
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
+      opacity: .8;
+    }
+
     /* ── KEYFRAMES ────────────────────────────────────── */
     @keyframes fadeUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeDown { from { opacity: 0; transform: translateY(-18px); } to { opacity: .85; transform: translateY(0); } }
@@ -405,6 +431,16 @@
   <section class="gallery" id="gallery"><!-- figures injected by script --></section>
 
   <footer>
+    <div class="footer-contact">
+      <a href="mailto:jenny890429us@gmail.com" aria-label="Email The Artisan Jen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        <span>jenny890429us@gmail.com</span>
+      </a>
+      <a href="https://www.instagram.com/artisan_jen" target="_blank" rel="noopener" aria-label="The Artisan Jen on Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        <span>@artisan_jen</span>
+      </a>
+    </div>
     <p>Seattle, WA &nbsp;·&nbsp; 2026</p>
   </footer>
 
